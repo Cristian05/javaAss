@@ -6,7 +6,7 @@ public class Country {
 	
 	private String language = "";
 	
-	private Boolean flag; 
+	private Boolean flag = false; 
 	
 	private ArrayList<Destination> destinations = new ArrayList<Destination>();
 	
@@ -19,10 +19,11 @@ public class Country {
 	 */
 	public Country(String countryName, String language, Boolean flag)
 	{
-		this.setCountryName(countryName);
-		this.setLanguage(language);
-		this.setFlag(flag);
+		setCountryName(countryName);
+		setLanguage(language);
+		setFlag(flag);
 	}
+	
 	
 	
 	/**
@@ -42,7 +43,7 @@ public class Country {
 		dest.setLatitude(latitude);
 		dest.setLongitude(longitude);		
 	
-		this.destinations.add(dest);
+		destinations.add(dest);
 		
 	}
 	
@@ -63,7 +64,7 @@ public class Country {
 	 * 
 	 * @return
 	 */
-	public String getCountryName()
+	public  String getCountryName()
 	{
 		return this.countryName;
 	}
@@ -86,7 +87,7 @@ public class Country {
 	{
 		String flag = "green";
 		
-		if(this.flag == false) {
+		if(flag == "false") {
 			flag = "red";
 		}
 		
@@ -116,9 +117,9 @@ public class Country {
 	 * 
 	 * @param flag
 	 */
-	public void setFlag(Boolean flag)
+	public void setFlag(Boolean newFlag)
 	{
-		this.flag = flag;
+		this.flag = newFlag;
 	}	
 	
 	

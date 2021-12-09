@@ -12,87 +12,19 @@ public class Booking {
 	
 	
 	public static void addCountryMenu(Scanner input) {
-		String[] str = null;
-		
-		
-		String countryName = "";
-		String lang = "";
-		Boolean flag = false;
-		
-		System.out.println("Write a country name \n");
-		countryName = input.next();
-		
-
-		System.out.println("Add language !");
-		lang = input.next();
-		
-
-		System.out.println("What is the flag color ? type [ red or green ] ");
-		String flagColor = input.next();				
-		
-		if(flagColor=="green") {
-			flag = true;
-		}else if(flagColor=="red") {
-		    flag = false;
-		}
-		
-		System.out.println("Are all the details correct ?" + countryName + " " + lang + " " + flagColor + "\n, Type [yes or no ]");
-		
-		if(input.nextLine()=="yes") {
-			//cream tara 
-			
-			continent.addCountry( countryName, lang, flag);
-			
-			main(str);
-		}else if(input.next()=="no") {
-			main(str);
-		}
 		
 	}
 	
 	
 	public static void addDetailsMenu(Scanner input) {
-		String[] str = null;
 		
-		String name;
-		int capacity;
-		double latitude;		
-		double longitude;
-		
-		
-		System.out.print("To what country belongs to destination? ");
-		System.out.println("");
-		
-		if(!filter(countries, input.next())) {
-			System.out.println("The country selected is not avaiable! ");
-			main(str);
-		}
-		
-		
-		System.out.println("Write the name of the Destination ");
-		name = input.next();
-		
-		System.out.println("Write the capacity of the Destination \n");
-		capacity = input.nextInt();
-		
-		System.out.println("Write the latitude of the Destination");
-		latitude = input.nextDouble();
-		
-		System.out.println("Write the longitude of the Destination");
-		longitude = input.nextDouble();
-		
-		System.out.println("Are all the details correct ?" + name + " " + capacity + " " + latitude + " " + longitude + "\n, Type [yes or no ]");
-		
-		if(input.nextLine()=="yes") {
-			//cream
-			main(str);
-		}else if(input.nextLine()=="no") {
-			main(str);
-		}
 	}
 	
 	
-	
+	/**
+	 * Creating a function for the user input
+	 * 
+	 */
 	public static void menu()
 	{
 		System.out.println("Welcome to the booking agency");
@@ -100,6 +32,7 @@ public class Booking {
 		System.out.println("1. Add new conuntry to a continent !");
 		System.out.println("2. Add details of a new  destination !");
 		System.out.println("3. Get statisctics !");
+		System.out.println("4. Exit");
 
 	}
 	
@@ -112,8 +45,7 @@ public class Booking {
 	 * @param countryName
 	 * @return
 	 */
-	
-	public static Boolean filter(ArrayList<Country> countries, String countryName) {
+	 public static Boolean filter(ArrayList<Country> countries, String countryName) {
 		
 		boolean result = false;
 		
@@ -126,29 +58,142 @@ public class Booking {
 		
 		return result;
 	}
-	
-	public static void main(String[] args) 
-	{
+	 
+	 
+	 
+	 
+	/**
+	 * The main function of the booking class
+	 * 
+	 * @param args
+	 */
+	public static void main(String[] args){
+		
 		  String[] str = null;
 		  Scanner input = new Scanner(System.in);
+		  
+		  Continent continent = new Continent();
+		  
+		  Country countrie = null;
+		  
+		  /**
+		   * Variables for Add Country
+		   * 
+		   */
+		  String countryName = "";
+		  String lang = "";
+		  Boolean flag = false;
+		  
+		  /**
+		   * Variables for Destination
+		   * 
+		   */
+		  String name;
+		  int capacity;
+		  double latitude;		
+		  double longitude;
+		  
 		 
-
-		  
-//		  seed();
-		  
+		  /**
+		   * Calling a function for the user menu
+		   * 
+		   */
 		  menu();
 		  switch (input.next())	{
 			  case "1":
-				  addCountryMenu(input);
-				  menu();
+				  
+				  //Adding a country 
+				  System.out.println("Write a country name \n");
+					countryName = input.next();
+					
+
+					System.out.println("Add language !");
+					lang = input.next();
+					
+
+					System.out.println("What is the flag color ? type [ red or green ] ");
+					String flagColor = input.next();				
+					
+					if(flagColor=="green") {
+						flag = true;
+					}else if(flagColor=="red") {
+					    flag = false;
+					}
+					
+					System.out.println("Are all the details correct ?" + countryName + " " + lang + " " + flagColor + "\n, Type [yes or no ]");
+					
+					if(input.nextLine()=="yes") {
+						//cream tara 
+						
+						  continent.addCountry( countryName, lang, flag);
+						
+						  System.out.println(continent.getCountries().get(0).getCountryName());
+
+						
+						main(str);
+						
+					}else if(input.next()=="no") {
+						
+						main(str);
+					}				
+					
+					//end add country 	
+					
+				  main(str);
 
 				  input.reset();
 				  System.out.println(input.next());
 				  input.reset();
+				  
 			  case "2":
-				  addDetailsMenu(input);
-				  menu();			  
-		  }
+				  
+				  //Adding a Destination and details 	
+				  
+					System.out.print("Type in a Country");
+					System.out.println("");
+					
+//					if(!filter(countries, input.next())) {
+//						System.out.println("The country selected is not avaiable! ");
+//						main(str);
+//					}
+					
+					
+					System.out.println("Write the name of the Destination ");
+					name = input.next();
+					
+					System.out.println("Write the capacity of the Destination \n");
+					capacity = input.nextInt();
+					
+					System.out.println("Write the latitude of the Destination");
+					latitude = input.nextDouble();
+					
+					System.out.println("Write the longitude of the Destination");
+					longitude = input.nextDouble();
+					
+					System.out.println("Are all the details correct ?" + name + " " + capacity + " " + latitude + " " + longitude + "\n, Type [yes or no ]");
+					
+					if(input.nextLine()=="yes") {
+						
+						countrie.addDestination(name, capacity, latitude, longitude);
+						System.out.println(countrie.getDestinations().get(0).getCapacity());
+						
+						main(str);
+						
+					}else if(input.nextLine()=="no") {
+						
+						main(str);
+						
+					}
+					
+					main(str);
+					
+					//end Destination	
+			  case "3":
+				  System.out.println("hi");
+			  case "4":
+				  System.exit(0);
+					
+		  	}
 		  
 		  
 		  
